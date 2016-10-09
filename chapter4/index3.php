@@ -57,6 +57,7 @@ class wechatCallbackapiTest
             switch ($RX_TYPE)
             {
                 case "voice":
+                    $this->logger("Voice Type");
                 case "text":
                     $result = $this->receiveText($postObj);
                     break;
@@ -75,7 +76,7 @@ class wechatCallbackapiTest
         if (!empty($object->Recognition)){
             $keyword = trim($object->Recognition);
             $mediaid = trim($object->MediaID);
-            $this->logger("Recognition: ".$keyword.":".mediaid);
+            $this->logger($keyword." : ".mediaid);
         }else{
             $keyword = trim($object->Content);
             $this->logger($keyword);
