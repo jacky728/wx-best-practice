@@ -64,6 +64,9 @@ class wechatCallbackapiTest
                 case "video":
                     $result = $this->receiveVideo($postObj);
                     break;
+                case "location"://位置消息
+                    $result = $this->receiveLocation($postObj);
+                    break;
                 case "event":
                     $result = $this->receiveEvent($postObj);
                     break;
@@ -141,6 +144,16 @@ class wechatCallbackapiTest
         $result = $this->transmitVideo($object, $content);;
         return $result;
     }  
+
+    /*
+     * 接收位置消息
+     */
+    private function receiveLocation($object)
+    {
+        $content = "你发送的是位置，纬度为：".$object->Location_X."；经度为：".$object->Location_Y."；缩放级别为：".$object->Scale."；位置为：".$object->Label;
+        $result = $this->transmitText($object, $content);
+        return $result;
+    }
     
     /*
      * 回复文本消息
@@ -355,6 +368,7 @@ $item_str
             $result = $this->transmitText($object, $content);
         }
 
+        error_log($result);
         return $result;
     }
 
