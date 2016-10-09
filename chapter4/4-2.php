@@ -24,24 +24,24 @@ $jsonmenu = '{
 			"name": "拍照或者相册发图",
 			"key": "rselfmenu_1_1"
 		}, {
-                        "type": "pic_weixin",
-                        "name": "微信相册发图",
-                        "key": "rselfmenu_1_2"			
+            "type": "pic_weixin",
+            "name": "微信相册发图",
+            "key": "rselfmenu_1_2"
 		}]
 	}, {
 		"name": "其它",
 		"sub_button": [{
-                        "type": "location_select",
-                        "name": "发送位置",
-                        "key": "rselfmenu_2_0"
+            "type": "location_select",
+            "name": "发送位置",
+            "key": "rselfmenu_2_0"
 		}, {
-                        "type": "click",
-                        "name": "今日歌曲",
-                        "key": "V1001_TODAY_MUSIC"
+            "type": "click",
+            "name": "今日歌曲",
+            "key": "V1001_TODAY_MUSIC"
 		}, {
-                        "type": "view",
-                        "name": "搜索",
-                        "url": "http://www.baidu.com/"
+            "type": "view",
+            "name": "搜索",
+            "url": "http://www.baidu.com/"
 		}]
 	}]
 }';
@@ -50,7 +50,7 @@ $url_create = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$acc
 $url_get = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=".$access_token;
 $url_delete = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=".$access_token;
 
-$url = $url_get;
+$url = $url_create;
 $result = https_request($url, $jsonmenu);
 var_dump($result);
 
