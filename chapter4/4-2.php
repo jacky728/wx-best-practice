@@ -18,7 +18,7 @@ $jsonmenu = '{
 		"sub_button": [{
 			"type": "pic_sysphoto",
 			"name": "系统拍照发图",
-			"key": "rselfmenu_1_0",
+			"key": "rselfmenu_1_0"
 		}, {
 			"type": "pic_photo_or_album",
 			"name": "拍照或者相册发图",
