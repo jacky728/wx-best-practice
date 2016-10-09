@@ -368,7 +368,7 @@ $item_str
             $result = $this->transmitText($object, $content);
         }
 
-        error_log($result);
+        #error_log($result);
         return $result;
     }
 
