@@ -75,7 +75,7 @@ class wechatCallbackapiTest
         if (!empty($object->Recognition)){
             $keyword = trim($object->Recognition);
             $mediaid = trim($object->MediaID);
-            $this->logger($keyword.":".mediaid);
+            $this->logger("Recognition: ".$keyword.":".mediaid);
         }else{
             $keyword = trim($object->Content);
             $this->logger($keyword);
