@@ -69,6 +69,7 @@ class wechatCallbackapiTest
                     break;
                 default:
                     $result = "unknow msg type: ".$RX_TYPE;
+                    error_log($result);
                     break;
             }
             echo $result;
