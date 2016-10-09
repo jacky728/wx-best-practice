@@ -296,7 +296,7 @@ $item_str
         {
             case "subscribe":   //关注事件
                 $content = "欢迎关注方倍工作室 ";
-                $content .= (!empty($object->EventKey)) ? ("\n来自二维码厂家 ".str_replace("qrscene_", ""replace"", $object->EventKey)) : "";
+                $content .= (!empty($object->EventKey)) ? ("\n来自二维码厂家 ".str_replace("qrscene_", "", $object->EventKey)) : "";
                 break;
             case "unsubscribe": //取消关注事件
                 $content = "取消关注";
