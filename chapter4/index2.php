@@ -335,6 +335,12 @@ $item_str
                 break;
             case 'LOCATION':
                 $content = "上传位置：纬度".$object->Latitude."；经度".$object->Longitude;
+
+                $url = "http://api.map.baidu.com/geocoder/v2/?ak=B944e1fce373e33ea4627f95f54f2ef9&location=$object->Latitude,$object->Longitude&output=json&coordtype=gcj02ll";
+                $output = file_get_contents($url);
+                $address = json_decode($output, true);
+                $content .= "位置 ".$address["result"]["addressComponent"]["province"]." ".$address["result"]["addressComponent"]["city"]." ".$address["result"]["addressComponent"]["district"]." ".$address["result"]["addressComponent"]["street"];
+
                 break;
             case 'scancode_waitmsg':
                 $content = "扫码带提示：类型".$object->ScanCodeInfo->ScanType." 结果：".$object->ScanCodeInfo->ScanResult;
