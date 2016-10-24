@@ -399,7 +399,11 @@ $item_str
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $data = curl_exec($curl);
-        if (curl_errno($curl)) {return 'ERROR '.curl_error($curl);}
+        if (curl_errno($curl)) {
+            $err = 'ERROR '.curl_error($curl);
+            error_log($err);
+            return $err;
+        }
         curl_close($curl);
         return $data;
     }
