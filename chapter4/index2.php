@@ -3,6 +3,7 @@
 // 响应用户消息
 // 微信公众账号响应给用户的不同消息类型
 //
+require('4-1.php');
 
 define("TOKEN", "weixin");
 
@@ -310,7 +311,18 @@ $item_str
         {
             case "subscribe":   //关注事件
                 $content = "欢迎关注方倍工作室 ";
-                $content .= (!empty($object->EventKey)) ? ("\n来自二维码厂家 ".str_replace("qrscene_", "", $object->EventKey)) : "";
+                $content .= (!empty($object->EventKey)) ? ("\n来自二维码厂家 scene_id=".str_replace("qrscene_", "", $object->EventKey)) : "";
+
+                $openid = $object->FromUserName;
+                $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
+                $output = $this->https_request($url);
+                $jsoninfo = json_decode($output, true);
+                $content .= "\n您好，".$jsoninfo["nickname"]."\n".
+                "性别：".(($jsoninfo["sex"] == 1)?"男":(($jsoninfo["sex"] == 2)?"女":"未知"))."\n".
+                "地区：".$jsoninfo["country"]." ".$jsoninfo["province"]." ".$jsoninfo["city"]."\n".
+                "语言：".(($jsoninfo["language"] == "zh_CN")?"简体中文":"非简体中文")."\n".
+                "关注：".date('Y年m月d日',$jsoninfo["subscribe_time"]);
+
                 break;
             case "unsubscribe": //取消关注事件
                 $content = "取消关注";
