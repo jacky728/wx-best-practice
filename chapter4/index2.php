@@ -314,7 +314,7 @@ $item_str
                 $content .= (!empty($object->EventKey)) ? ("\n来自二维码厂家 scene_id=".str_replace("qrscene_", "", $object->EventKey)) : "";
 
                 $openid = $object->FromUserName;
-                $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
+                $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$access_token."&openid=$openid&lang=zh_CN";
                 $output = $this->https_request($url);
                 $jsoninfo = json_decode($output, true);
                 $content .= "\n您好，".$jsoninfo["nickname"]."\n".
