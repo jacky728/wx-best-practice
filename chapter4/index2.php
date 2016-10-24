@@ -3,7 +3,6 @@
 // 响应用户消息
 // 微信公众账号响应给用户的不同消息类型
 //
-require('4-1.php');
 
 define("TOKEN", "weixin");
 
@@ -70,6 +69,14 @@ class wechatCallbackapiTest
                     break;
                 case "event":
                     $result = $this->receiveEvent($postObj);
+                    break;
+                case "MASSSENDJOBFINISH":
+                    $content = "消息ID：".$object->MsgID.
+                           "\n结果：".$object->Status.
+                           "\n粉丝数：".$object->TotalCount.
+                           "\n过滤：".$object->FilterCount.
+                           "\n发送成功：".$object->SentCount.
+                           "\n发送失败：".$object->ErrorCount;
                     break;
                 default:
                     $result = "unknow msg type: ".$RX_TYPE;
@@ -389,7 +396,6 @@ $item_str
         #error_log($result);
         return $result;
     }
-
 
     function https_request($url)
     {
